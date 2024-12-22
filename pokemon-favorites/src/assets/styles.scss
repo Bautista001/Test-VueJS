@@ -1,0 +1,147 @@
+// Variables
+$color-dark: #353535;
+$color-medium-dark: #5E5E5E;
+$color-light-gray: #BFBFBF;
+$color-yellow: #ECA539;
+$color-red: #F22539;
+$color-red-dark: #C00E20;
+
+$main-background: #F9F9F9;
+
+$font-size-sm: 0.8rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.5rem;
+
+// Base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato";
+  background-color: #fff;
+}
+
+h1, h2, h3, h4 {
+  color: $color-dark;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+p {
+  color: $color-medium-dark;
+}
+
+// Welcome page
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-background;
+  gap: 30px;
+  height: 100vh;
+}
+
+.welcome-content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  .welcome-image {
+    margin-bottom: 4rem;
+  }
+  .welcome-text {
+    margin-bottom: 3rem;
+    .welcome-title {
+      margin-bottom: 1.5rem;
+    }
+    .welcome-description {
+      font-size: $font-size-lg;
+      line-height: 27px;
+    }
+  }
+}
+
+.pikachu-image {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  background-color: $color-red;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-red-dark;
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .welcome {
+    flex-direction: column;
+  }
+  
+  .welcome-content {
+    .welcome-text {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .pikachu-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pikachu-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

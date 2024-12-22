@@ -9,7 +9,7 @@ const router = createRouter({
     { path: '/', name: 'Welcome', component: WelcomeView },
     { path: '/loading', name: 'Loading', component: LoadingView },
     { path: '/list', name: 'List', component: ListView },
-  ]
+  ],
 })
 
 export default router
