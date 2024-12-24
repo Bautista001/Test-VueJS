@@ -1,19 +1,44 @@
-// Variables
-$color-dark: #353535;
-$color-medium-dark: #5E5E5E;
-$color-light-gray: #BFBFBF;
-$color-yellow: #ECA539;
-$color-red: #F22539;
-$color-red-dark: #C00E20;
+// Colors
+:root {
+  --color-primary: #333a4b;
+  --color-dark: #353535;
+  --color-medium-dark: #5E5E5E;
+  --color-light-gray: #BFBFBF;
+  --color-light: #E8E8E8;
+  --color-yellow: #ECA539;
+  --color-red: #F22539;
+  --color-red-dark: #C00E20;
+  --color-background-main: #F9F9F9;
+}
 
-$main-background: #F9F9F9;
+// Typos
+:root {
+  --font-size-sm: 0.8rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+}
 
-$font-size-sm: 0.8rem;
-$font-size-md: 1rem;
-$font-size-lg: 1.125rem;
-$font-size-xl: 1.5rem;
+// Spacing
+:root {
+  --padding-sm: 0.5rem;
+  --padding-md: 1rem;
+  --padding-lg: 1.5rem;
+}
 
-// Base
+// Breakpoints
+:root {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
+
+$star-container: #F5F5F5;
+$star-container-hover: #e4e3e3;
+$star-active: #ECA539;
+
+// Estilos base
 * {
   margin: 0;
   padding: 0;
@@ -25,123 +50,170 @@ body {
   background-color: #fff;
 }
 
-h1, h2, h3, h4 {
-  color: $color-dark;
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-dark);
   font-weight: bold;
-  margin-bottom: 15px;
-}
-
-p {
-  color: $color-medium-dark;
-}
-
-// Welcome page
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $main-background;
-  gap: 30px;
-  height: 100vh;
-}
-
-.welcome-content {
-  text-align: center;
-  max-width: 600px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 10px;
-  .welcome-image {
-    margin-bottom: 4rem;
-  }
-  .welcome-text {
-    margin-bottom: 3rem;
-    .welcome-title {
-      margin-bottom: 1.5rem;
-    }
-    .welcome-description {
-      font-size: $font-size-lg;
-      line-height: 27px;
-    }
-  }
-}
-
-.pikachu-image {
-  margin-bottom: 20px;
+  margin-bottom: var(--padding-md);
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: var(--font-size-2xl);
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: var(--font-size-xl);
 }
 
 p {
-  font-size: 1rem;
-  margin-bottom: 20px;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--padding-lg);
+  color: var(--color-medium-dark);
 }
 
-button {
-  padding: 12px 24px;
-  font-size: 1rem;
-  color: white;
-  background-color: $color-red;
+a {
+  text-decoration: none;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+// Utils
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+// Buttons
+@mixin button($bg-color, $color) {
+  padding: var(--padding-md) var(--padding-lg);
+  font-size: var(--font-size-md);
   border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: $bg-color;
+  color: $color;
+  user-select: none
+}
 
-  &:hover {
-    background-color: $color-red-dark;
+.btn-primary {
+  @include button(var(--color-red), #fff);
+}
+
+.btn-secondary {
+  @include button(var(--color-light-gray), #fff);
+}
+
+.btn-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.btn:hover {
+  background-color: var(--color-red-dark);
+}
+
+// Inputs
+input {
+  padding: var(--padding-md);
+  border: none;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--color-light-gray);
   }
 }
 
-// Mobile
-@media (max-width: 768px) {
-  .welcome {
-    flex-direction: column;
-  }
-  
-  .welcome-content {
-    .welcome-text {
-      max-width: 80%;
-      margin: 0 auto;
+// Iconos
+.icon {
+  width: var(--font-size-lg);
+  height: var(--font-size-lg);
+}
+
+// Layouts
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-background-main);
+  gap: var(--padding-lg);
+  padding: var(--padding-lg);
+}
+
+// Estrellas
+.star-container {
+  background-color: $star-container;
+  padding: var(--padding-sm);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+
+  .star-icon {
+    &.active path {
+      fill: $star-active;
+    }
+
+    &.inactive path {
+      fill: var(--color-light-gray);
     }
   }
 
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.9rem;
-  }
-
-  .pikachu-image {
-    width: 80px;
-    height: 80px;
+  &:hover {
+    background-color: $star-container-hover;
   }
 }
 
-@media (max-width: 480px) {
-  .pikachu-image {
-    width: 70px;
-    height: 70px;
-  }
-
+// Media Queries
+@media (max-width: var(--breakpoint-md)) {
   h1 {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   p {
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
   }
 
-  button {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  .btn-primary {
+    padding: var(--padding-sm) var(--padding-lg);
+  }
+  
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  h1 {
+    font-size: var(--font-size-lg);
+  }
+
+  .btn {
+    padding: var(--padding-sm);
+    font-size: var(--font-size-sm);
   }
 }
